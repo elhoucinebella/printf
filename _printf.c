@@ -32,7 +32,7 @@ while (*ptr)
 {
 if (*ptr != '%')
 {
-write(1, ptr, 1);
+_putchar(*ptr);
 count++;
 }
 else
@@ -43,7 +43,7 @@ switch (*(++ptr))
 	{
 	char c = (char)va_arg(args, int);
 
-	write(1, &c, 1);
+	_putchar(c);
 	count++;
 	break;
 	}
@@ -56,7 +56,7 @@ switch (*(++ptr))
 	}
 	while (*str)
 	{
-	write(1, str, 1);
+	_putchar(*str);
 	count++;
 	str++;
 	}
@@ -64,7 +64,7 @@ switch (*(++ptr))
 	}
 	case '%':
 	{
-	write(1, "%", 1);
+	_putchar(37);
 	count++;
 	break;
 	}
