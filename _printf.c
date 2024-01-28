@@ -12,7 +12,6 @@
 * Return: the count of lenght.
 */
 
-int printing(char c);
 
 int _printf(const char *format, ...)
 {
@@ -28,7 +27,7 @@ while (*ptr)
 {
 if (*ptr != '%')
 {
-_putchar(*ptr);
+write(1, ptr, 1);
 count++;
 }
 else
@@ -39,7 +38,7 @@ switch (*(++ptr))
 	{
 	char c = (char)va_arg(args, int);
 
-	_putchar(c);
+	write(1, &c, 1);
 	count++;
 	break;
 	}
@@ -49,7 +48,7 @@ switch (*(++ptr))
 
 	while (*str)
 	{
-	_putchar(*str);
+	write(1, str, 1);
 	count++;
 	str++;
 	}
@@ -57,7 +56,7 @@ switch (*(++ptr))
 	}
 	case '%':
 	{
-	_putchar(37);
+	write(1, "%", 1);
 	count++;
 	break;
 	}
@@ -67,16 +66,4 @@ ptr++;
 }
 va_end(args);
 return (count);
-}
-
-/**
- * printing - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int printing(char c)
-{
-	return (write(1, &c, 1));
 }
