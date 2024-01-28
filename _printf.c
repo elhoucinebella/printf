@@ -51,6 +51,9 @@ switch (*(++ptr))
 	{
 	const char *str = va_arg(args, const char *);
 
+	if (str == NULL) {
+	str = "(null)";
+	}
 	while (*str)
 	{
 	write(1, str, 1);
