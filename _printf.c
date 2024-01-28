@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "main.h"
 #include <string.h>
+#include <unistd.h>
 
 /**
 * _printf - check the code
@@ -11,6 +12,7 @@
 * Return: the count of lenght.
 */
 
+int printing(char c);
 
 int _printf(const char *format, ...)
 {
@@ -65,4 +67,16 @@ ptr++;
 }
 va_end(args);
 return (count);
+}
+
+/**
+ * printing - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int printing(char c)
+{
+	return (write(1, &c, 1));
 }
