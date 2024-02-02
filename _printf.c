@@ -74,41 +74,44 @@ switch (*(++ptr))
 	break;
 	}
 	case 'i':
-	{
-	int n = va_arg(args, int);
+{
+    int n = va_arg(args, int);
     int printed = 0;
 
     if (n < 0)
     {
-    _putchar('-');
-    count++;
-    n = -n;
+        _putchar('-');
+        count++;
+        n = -n;
     }
     if (n == 0)
     {
-    _putchar('0');
-    count++;
+        _putchar('0');
+        count++;
     }
     else
     {
-    int temp = n;
     int num_chars = 0;
-	char *num_str = malloc(num_chars + 1);
-    while (temp != 0)
+    int temp = n;
+    char *num_str;
+
+	while (temp != 0)
     {
-	temp /= 10;
-	num_chars++;
-	}
+    temp /= 10;
+    num_chars++;
+    }
 
-	if (num_str == NULL)
-	{	
-    return -1;
-	}
+    num_str = (char *)malloc(num_chars + 1);
+    if (num_str == NULL)
+    {
+    return (-1);
+    }
 
-	num_str[num_chars] = '\0';
-	while (n != 0)
-	{
-	num_str[--num_chars] = (char)((n % 10) + '0');
+    num_str[num_chars] = '\0';
+
+    while (n != 0)
+    {
+    num_str[--num_chars] = (char)((n % 10) + '0');
     n /= 10;
     }
     while (*num_str)
@@ -120,6 +123,7 @@ switch (*(++ptr))
     }
 	free(num_str - printed);
     }
+    break;
     break;
 	default:
     _putchar('%');
