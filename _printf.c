@@ -117,6 +117,9 @@ switch (*(++ptr))
 	free(num_str - printed);
     }
     break;
+	default:
+	_putchar(37);
+	count++;
 	}
 }
 }
