@@ -118,8 +118,9 @@ switch (*(++ptr))
     }
     break;
 	default:
-	_putchar(37);
-	count++;
+    _putchar(*ptr);
+    count++;
+    break;
 	}
 }
 }
