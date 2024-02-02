@@ -123,6 +123,7 @@ switch (*(++ptr))
     }
 	free(num_str - printed);
     }
+	count += printed;
     break;
     break;
 	default:
