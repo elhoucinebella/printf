@@ -76,46 +76,34 @@ switch (*(++ptr))
 	
 case 'i':
 {
-	  int n = va_arg(args, int);
-    int temp = n;
-    int num_chars = 0;
-    char *buffer;
+    int n = va_arg(args, int);
+    char temp_buffer[12]; // Maximum 12 characters for a 32-bit integer, including the sign and null terminator
+    int printed = 0;
 
     if (n < 0) {
         _putchar('-');
-        count++;
+        printed++;
         n = -n;
     }
     if (n == 0) {
         _putchar('0');
-        count++;
+        printed++;
     }
     else {
-        while (temp != 0) {
-            temp /= 10;
-            num_chars++;
-        }
-
-        buffer = (char *)malloc(num_chars + 1);
-        if (buffer == NULL) {
-            // Handle allocation failure
-            return -1;
-        }
-
-        buffer[num_chars] = '\0';
+        int index = 0;
         while (n != 0) {
-            buffer[--num_chars] = (char)((n % 10) + '0');
+            temp_buffer[index++] = (char)((n % 10) + '0');
             n /= 10;
         }
-        while (*buffer) {
-            _putchar(*buffer);
-            count++;
-            buffer++;
+        while (index > 0) {
+            _putchar(temp_buffer[--index]);
+            printed++;
         }
-        free(buffer); 
     }
+    count += printed;
     break;
 }
+
 
 	default:
     _putchar('%');
