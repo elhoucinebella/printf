@@ -38,6 +38,10 @@ count++;
 }
 else
 {
+if (*(ptr + 1) == '\0')
+{
+return -1;
+}
 switch (*(++ptr))
 {
 	case 'c':
@@ -118,8 +122,9 @@ switch (*(++ptr))
     }
     break;
 	default:
+    _putchar('%');
     _putchar(*ptr);
-    count++;
+    count += 2;
     break;
 	}
 }
