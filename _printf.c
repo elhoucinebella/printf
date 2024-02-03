@@ -76,6 +76,7 @@ switch (*(++ptr))
 	
 
 	case 'i':
+	case 'd':
 {
 	int n = va_arg(args, int);
     int temp = n;
