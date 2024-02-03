@@ -111,7 +111,7 @@ switch (*(++ptr))
         }
 
         num_str[num_chars] = '\0';
-        temp = n; // Reset temp to the original value of n
+        temp = n;
         for (i = num_chars - 1; i >= 0; i--)
         {
             num_str[i] = (char)((temp % 10) + '0');
