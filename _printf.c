@@ -74,36 +74,58 @@ switch (*(++ptr))
 	break;
 	}
 	
-case 'i':
-{
-    int n = va_arg(args, int);
-    char temp_buffer[12]; // Maximum 12 characters for a 32-bit integer, including the sign and null terminator
-    int printed = 0;
 
-    if (n < 0) {
-        _putchar('-');
-        printed++;
-        n = -n;
+	case 'i':
+{
+	int n = va_arg(args, int);
+
+	
+    if (n < 0)
+    {
+    _putchar('-');
+    count++;
+    n = -n;
     }
-    if (n == 0) {
-        _putchar('0');
-        printed++;
+	if (n == 0)
+    {
+    _putchar('0');
+    count++;
     }
-    else {
-        int index = 0;
-        while (n != 0) {
-            temp_buffer[index++] = (char)((n % 10) + '0');
-            n /= 10;
-        }
-        while (index > 0) {
-            _putchar(temp_buffer[--index]);
-            printed++;
-        }
-    }
-    count += printed;
-    break;
+    else
+    {
+    int temp = n;
+    int num_chars = 0;
+	char *num_str;
+	int i;
+
+    while (temp != 0)
+    {
+	temp /= 10;
+	num_chars++;
+	}
+	num_str = malloc(num_chars + 1);
+	if (num_str == NULL)
+	{	
+    return -1;
+	}
+
+	num_str[num_chars] = '\0';
+	while (n != 0)
+{
+    --num_chars;
+    num_str[num_chars] = (char)((n % 10) + '0');
+    n /= 10;
 }
 
+for (i = 0; i < num_chars; i++)
+{
+    _putchar(num_str[i]);
+    count++;
+}
+free(num_str);			
+}
+	break;
+}
 
 	default:
     _putchar('%');
