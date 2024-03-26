@@ -1,1 +1,9 @@
-this is a readme file in the printf project directory
+printf project
+
+This is a team project
+
+********************
+
+Team's members are:
+
+Zouhair & Elhoucine
